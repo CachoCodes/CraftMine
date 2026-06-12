@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\CraftMine\CraftMine\Classes\EngineFunctions.hpp(71,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\CraftMine\CraftMine\Classes\Chunk.hpp(996,44): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\CraftMine\CraftMine\main.cpp(99,22): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  CraftMine.vcxproj -> C:\CraftMine\x64\Debug\CraftMine.exe
