@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #define GLM_ENABLE_EXPERIMENTAL
 #define FASTNOISE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
@@ -9,6 +8,8 @@
 #include <cmath>
 #include <sstream>
 #include <fstream>
+#include <unordered_set>
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <FastNoiseLite/FastNoiseLite.h>
@@ -20,7 +21,6 @@
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/vector_angle.hpp>
 #include <stb/stb_image.h>
-#include <stb/stb_image_write.h>
 #include <random>
 #include "Classes/EngineFunctions.hpp"
 #include "Classes/Camera.hpp"
@@ -38,7 +38,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
 
-	window = glfwCreateWindow(EngineData::WindowWidth, EngineData::WindowHeight, "Minecraft", nullptr, nullptr);
+	window = glfwCreateWindow(EngineData::WindowWidth, EngineData::WindowHeight, "CraftMine", nullptr, nullptr);
 	if (window == NULL) {
 		std::cerr << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -89,9 +89,10 @@ int main() {
 	std::cout << "=========================================\n";
 
 	glViewport(0, 0, EngineData::WindowWidth, EngineData::WindowHeight);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_DEPTH_TEST); 
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glFrontFace(GL_CCW);	
 	InitEngine();
 	while (!glfwWindowShouldClose(window)) {
 		EngineFunctions::DeltaTime();
